@@ -1,75 +1,76 @@
-using System.Collections;
-using System.Collections.Generic;
-using Controller;
 using Domain.GameRules;
 using Domain.Models;
+using Manager;
 using UnityEngine;
 
-public class ChariotController : MonoBehaviour
+namespace Controller
 {
-    public float speed = 30f;
-    public float rotateSpeed = 50f;
-    public float patience = 0.5f;
-    public int anger = 0;
-    public int sloth = 0;
-    public GameObject user;
-
-    private Chariot _chariot;
-
-    private GetChariotTranslation _getChariotTranslation;
-    private GetChariotRotation _getChariotRotation;
-
-    private GameManager _gameManager;
-
-    private float _time;
-
-    void Start()
+    public class ChariotController : MonoBehaviour
     {
-        _gameManager = GameManager.GetInstance();
-        _chariot = new Chariot(speed, patience, anger, sloth);
-        _getChariotRotation = new GetChariotRotation();
-        _getChariotTranslation = new GetChariotTranslation();
-        _time = Time.time;
-    }
+        public float speed = 30f;
+        public float rotateSpeed = 50f;
+        public float patience = 0.5f;
+        public int anger = 0;
+        public int sloth = 0;
+        public GameObject user;
 
-    void Update()
-    {
-        if (_gameManager.isGameOver) return;
+        private Chariot _chariot;
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        private GetChariotTranslation _getChariotTranslation;
+        private GetChariotRotation _getChariotRotation;
+
+        private GameManager _gameManager;
+
+        private float _time;
+
+        void Start()
         {
-            WhipHorse();
-        }
-        MoveHorse();
-        UpdateHorseState();
-    }
-
-    private void UpdateHorseState()
-    {
-        var nextTime = Time.time;
-        if (nextTime - _time >= 1f)
-        {
-            _time = nextTime;
-            _chariot.Anger--;
-            _chariot.Sloth += 2;
+            _gameManager = GameManager.GetInstance();
+            _chariot = new Chariot(speed, patience, anger, sloth);
+            _getChariotRotation = new GetChariotRotation();
+            _getChariotTranslation = new GetChariotTranslation();
+            _time = Time.time;
         }
 
-        _gameManager.SetAngerPoint(_chariot.Anger);
-        _gameManager.SetSlothPoint(_chariot.Sloth);
-    }
+        void Update()
+        {
+            if (_gameManager.isGameOver) return;
 
-    private void MoveHorse()
-    {
-        var horizontalInput = Input.GetAxis("Horizontal");
-        var verticalInput = Input.GetAxis("Vertical");
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                WhipHorse();
+            }
+            MoveHorse();
+            UpdateHorseState();
+        }
 
-        transform.Translate(_getChariotTranslation.Handle(this,_chariot, verticalInput, Time.deltaTime));
-        transform.Rotate(_getChariotRotation.Handle(this, _chariot, rotateSpeed, horizontalInput, Time.deltaTime));
-    }
+        private void UpdateHorseState()
+        {
+            var nextTime = Time.time;
+            if (nextTime - _time >= 1f)
+            {
+                _time = nextTime;
+                _chariot.Anger--;
+                _chariot.Sloth += 2;
+            }
 
-    private void WhipHorse()
-    {
-        _chariot.Sloth /= 2;
-        _chariot.Anger += 10;
+            _gameManager.SetAngerPoint(_chariot.Anger);
+            _gameManager.SetSlothPoint(_chariot.Sloth);
+        }
+
+        private void MoveHorse()
+        {
+            var horizontalInput = Input.GetAxis("Horizontal");
+            var verticalInput = Input.GetAxis("Vertical");
+
+            transform.Translate(_getChariotTranslation.Handle(this,_chariot, verticalInput, Time.deltaTime));
+            transform.Rotate(_getChariotRotation.Handle(this, _chariot, rotateSpeed, horizontalInput, Time.deltaTime));
+        }
+
+        private void WhipHorse()
+        {
+            _chariot.Sloth /= 2;
+            _chariot.Anger += 10;
+        }
     }
 }

@@ -1,28 +1,28 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Ceiling : MonoBehaviour
+namespace Controller
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Ceiling : MonoBehaviour
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        Debug.Log($"tag: {other.tag}");
-        if (other.CompareTag("Target"))
+        // Start is called before the first frame update
+        void Start()
         {
-            Destroy(other.gameObject);
+        
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+        
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            Debug.Log($"tag: {other.tag}");
+            if (other.CompareTag("Target"))
+            {
+                Destroy(other.gameObject);
+            }
         }
     }
 }

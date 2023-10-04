@@ -1,4 +1,5 @@
 using Controller;
+using Manager;
 using UnityEngine;
 
 public class Arrow : MonoBehaviour
