@@ -7,7 +7,7 @@ public class Target : MonoBehaviour
 {
     public GameObject balloon;
     public GameObject targetBox;
-    
+
     private Rigidbody targetBoxRb;
     private float speed = 2f;
 
@@ -25,18 +25,12 @@ public class Target : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        if(balloon.IsDestroyed()) targetBoxRb.isKinematic = false;
-        transform.Translate(Vector3.up * (speed * Time.deltaTime));
-        DestroyAtTop();
-    }
 
-    private void DestroyAtTop()
-    {
-        if (transform.position.y > 30.0f)
+        if (balloon.IsDestroyed())
         {
-            Destroy(gameObject);
+            targetBoxRb.isKinematic = false;
+            return;
         }
+        transform.Translate(Vector3.up * (speed * Time.deltaTime));
     }
-
-
 }
