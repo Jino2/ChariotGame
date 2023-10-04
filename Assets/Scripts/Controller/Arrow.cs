@@ -13,7 +13,6 @@ public class Arrow : MonoBehaviour
     {
         gameManager = GameManager.GetInstance();
         arrowRb = GetComponent<Rigidbody>();
-        // arrowRb.AddForce(Vector3.);
     }
 
     // Update is called once per frame
@@ -33,6 +32,10 @@ public class Arrow : MonoBehaviour
         {
             gameManager.AddScore(1);
             gameManager.AddTime(5.0f);
+            Destroy(other.gameObject);
+        }
+        else if (other.CompareTag("Balloon"))
+        {
             Destroy(other.gameObject);
         }
 

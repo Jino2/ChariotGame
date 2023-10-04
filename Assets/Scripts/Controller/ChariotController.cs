@@ -23,7 +23,6 @@ public class ChariotController : MonoBehaviour
 
     private float _time;
 
-    // Start is called before the first frame update
     void Start()
     {
         _gameManager = GameManager.GetInstance();
@@ -33,7 +32,6 @@ public class ChariotController : MonoBehaviour
         _time = Time.time;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_gameManager.isGameOver) return;
@@ -65,8 +63,8 @@ public class ChariotController : MonoBehaviour
         var horizontalInput = Input.GetAxis("Horizontal");
         var verticalInput = Input.GetAxis("Vertical");
 
-        transform.Translate(_getChariotTranslation.Handle(_chariot, verticalInput, Time.deltaTime));
-        transform.Rotate(_getChariotRotation.Handle(_chariot, rotateSpeed, horizontalInput, Time.deltaTime));
+        transform.Translate(_getChariotTranslation.Handle(this,_chariot, verticalInput, Time.deltaTime));
+        transform.Rotate(_getChariotRotation.Handle(this, _chariot, rotateSpeed, horizontalInput, Time.deltaTime));
     }
 
     private void WhipHorse()
