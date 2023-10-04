@@ -48,7 +48,7 @@ namespace Game.Controller
             {
                 var dx = mouseX - (float)width / 2;
                 var dy = mouseY - (float)height / 2;
-
+                
                 var thetaY = Mathf.Atan2(dx, shootDistance) / Math.PI * 180;
                 var thetaX = Mathf.Atan2(dy, shootDistance) / Math.PI * -180;
                 var eulerAnger = transform.rotation.eulerAngles;

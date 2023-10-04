@@ -2055,7 +2055,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chariot: {fileID: 1344348465}
   arrowPrefab: {fileID: 100000, guid: cff4c024d20095a458a66e6e0d47bf1b, type: 3}
-  shootDistance: 1000
+  shootDistance: 2000
 --- !u!135 &1031678295
 SphereCollider:
   m_ObjectHideFlags: 0
