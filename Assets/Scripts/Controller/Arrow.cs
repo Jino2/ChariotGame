@@ -1,4 +1,3 @@
-using System;
 using Controller;
 using UnityEngine;
 
@@ -6,13 +5,11 @@ public class Arrow : MonoBehaviour
 {
     public float speed = 50f;
     private GameManager gameManager;
-    private Rigidbody arrowRb;
 
     // Start is called before the first frame update
     void Start()
     {
         gameManager = GameManager.GetInstance();
-        arrowRb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -30,6 +27,7 @@ public class Arrow : MonoBehaviour
         if (other.CompareTag("Player")) return;
         if (other.CompareTag("Target"))
         {
+            
             gameManager.AddScore(1);
             gameManager.AddTime(5.0f);
             Destroy(other.gameObject);

@@ -9,6 +9,7 @@ public class Target : MonoBehaviour
     public GameObject targetBox;
 
     private Rigidbody targetBoxRb;
+    private AudioSource scoringAudio;
     private float speed = 2f;
 
     // Start is called before the first frame update

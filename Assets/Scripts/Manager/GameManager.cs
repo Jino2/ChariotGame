@@ -24,6 +24,7 @@ namespace Controller
         private float timer = 60.0f;
         private int angerPoint;
         private int slothPoint;
+        private AudioSource scoringAudio;
 
         public static GameManager GetInstance()
         {
@@ -41,6 +42,7 @@ namespace Controller
             scoreText = GameObject.Find("Score").GetComponent<TextMeshProUGUI>();
             angerSlider = GameObject.Find("AngerSlider").GetComponent<Slider>();
             tiredSlider = GameObject.Find("TiredSlider").GetComponent<Slider>();
+            scoringAudio = GetComponent<AudioSource>();
         }
 
         private void Update()
@@ -62,6 +64,7 @@ namespace Controller
 
         public void AddScore(int scoreToAdd)
         {
+            scoringAudio.Play();
             this.score += scoreToAdd;
         }
 
