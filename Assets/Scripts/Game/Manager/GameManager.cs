@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-namespace Manager
+namespace Game.Manager
 {
     public class GameManager : MonoBehaviour
     {

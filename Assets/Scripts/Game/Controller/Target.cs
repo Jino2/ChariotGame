@@ -1,7 +1,7 @@
 using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Controller
+namespace Game.Controller
 {
     public class Target : MonoBehaviour
     {

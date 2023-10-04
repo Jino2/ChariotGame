@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Manager
+namespace Game.Manager
 {
     public class TargetManager : MonoBehaviour
     {

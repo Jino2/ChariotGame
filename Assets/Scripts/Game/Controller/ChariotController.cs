@@ -1,9 +1,9 @@
 using Domain.GameRules;
 using Domain.Models;
-using Manager;
+using Game.Manager;
 using UnityEngine;
 
-namespace Controller
+namespace Game.Controller
 {
     public class ChariotController : MonoBehaviour
     {

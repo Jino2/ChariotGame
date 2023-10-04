@@ -1,9 +1,9 @@
 using System;
-using Manager;
+using Game.Manager;
 using UnityEngine;
 using static UnityEngine.Screen;
 
-namespace Controller
+namespace Game.Controller
 {
     public class UserController : MonoBehaviour
     {

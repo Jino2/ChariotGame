@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Controller
+namespace Game.Controller
 {
     public class Ceiling : MonoBehaviour
     {
