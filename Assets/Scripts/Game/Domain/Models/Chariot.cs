@@ -15,13 +15,19 @@ namespace Domain.Models
         public float Speed { get; }
         public float Patience { get; }
 
-        public int Anger { get; set; }
-        public int Sloth { get; set; }
-
-        public void Whip()
+        public int Anger
         {
-            Anger = Convert.ToInt32(Anger + 1 / Patience);
-            Sloth /= 2;
+            get => _anger;
+            set => _anger = value > 100 ? 100 : value;
         }
+
+        public int Sloth
+        {
+            get => _sloth;
+            set => _sloth = value > 100 ? 100 : value;
+        }
+
+        private int _anger = 0;
+        private int _sloth = 0;
     }
 }
