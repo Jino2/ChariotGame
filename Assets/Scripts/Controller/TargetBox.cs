@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Controller
@@ -11,7 +10,7 @@ namespace Controller
         {
             gameManager = GameManager.GetInstance();
         }
-
+    
         private void OnCollisionEnter(Collision other)
         {
             if (other.gameObject.CompareTag("Player"))
@@ -21,6 +20,15 @@ namespace Controller
                 Destroy(gameObject);
             }
 
+            DestroyAtTop();
+        }
+
+        private void DestroyAtTop()
+        {
+            if (transform.position.y > 30.0f)
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
